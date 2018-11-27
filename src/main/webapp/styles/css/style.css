@@ -1,0 +1,68 @@
+
+.header{
+	color:black;
+	min-height:80px;
+}
+
+.header-line{
+	min-height:40px;
+	background:lightyellow;
+}
+
+.list-div{
+	min-height:450px;
+	margin:1.5%;
+}
+
+.list-header{
+	text-align : center;
+	font-size:30px;
+	color:black;
+}
+.list{
+	list-style:none;
+	color:black;
+	text-align:left;
+	font-size:20px;
+}
+.list:hover{
+	bakcground-color:lightgrey;
+}
+.lost-link{
+	color:yellow;
+	margin-left:10px;
+}
+
+.blinking-lost{
+    animation:blinkingLostText 2s infinite;
+}
+@keyframes blinkingLostText{
+    0%{     color: red;    }
+    49%{    color: red; }
+    50%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: red;    }
+}
+
+.blinking-found{
+    animation:blinkingFoundText 2s infinite;
+}
+@keyframes blinkingFoundText{
+    0%{     color: green;    }
+    49%{    color: green; }
+    50%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: green;    }
+}
+
+.blinking-lost-border{
+	background-image : linear-gradient(white, #f95b5b);
+}
+
+.blinking-found-border{
+	background-image:linear-gradient(white,lightgreen);
+}
+
+.claim-list-div{
+	background-image:linear-gradient(white,lightgrey);
+}

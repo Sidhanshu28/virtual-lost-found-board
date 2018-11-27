@@ -11,73 +11,60 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
 
 </head>
-<body>
-	<div class="container">
-		<h1 align="center">Feeds List</h1>
+<body style="background-image: linear-gradient(to top,#5d817b,#d1dbcf);">
+	<div class="container" style="padding:0 !important;background-image: linear-gradient(#5f813f,#c1c145);">
+	<div class="header">
+		<h1 align="center"><strong>VIRTUAL BOARD</strong></h1>
+	</div>
+	<div class="header-line">
+		<h4 align="center">Welcome to the Virtual Lost and Found Board</h4>
+	</div>
 	
-	<div  style= "width:40%;display:inline-block">
+	<div  style= "width:30%;display:inline-block;margin:1.5%;">
 		<form:form class="form-horizontal">
-			<table
-				class="table table-bordered table-hovered table-striped viewfeeds"
-				style="text-align:center; width:40%;display:inline-block">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Lost Item Category</th>
-						<th>Lost Item Desc</th>
-						<th>Location</th>
-						<th>Date</th>
-						<th>Prize</th>
-					</tr>
-				</thead>
-				<tbody>
+			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" href="">Click here!</a></span>
+			<div class="lost-list-div list-div blinking-lost-border">
+				<div class="lost-list-header list-header blinking-lost"><strong>LOST BOARD</strong></div>
+				<ul class="lost-list list">
 					<c:forEach var="lost" items="${list}">
-						<tr>
-							<td>${lost.lostId}</td>
-							<td>${lost.lostCategory}</td>
-							<td>${lost.lostDesc}</td>
-							<td>${lost.lostLocation}</td>
-							<td>${lost.lostDate}</td>
-							<td>${lost.lostPrize}</td>
-						</tr>
+						<li>
+							<strong>${lost.lostCategory} </strong> - ${lost.lostDesc}
+						</li>
 					</c:forEach>
-
-				</tbody>
-			</table>
+				</ul>
+			</div>
 		</form:form>
 	</div>
-	<div style= "width:40%;display:inline-block">
+	<div style= "width:30%;display:inline-block;margin:1.5%;">
 	<form:form class="form-horizontal">
-					<table
-				class="table table-bordered table-hovered table-striped viewfeeds"
-				style="text-align:center;">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Found Item Category</th>
-						<th>Found Item Desc</th>
-						<th>Location</th>
-						<th>Date</th>
-						<th>Prize</th>
-					</tr>
-				</thead>
-				<tbody>
+					<div class="claim-list-div list-div">
+				<div class="claim-list-header list-header"><strong>CLAIM BOARD</strong></div>
+				<ul class="claim-list list">
 					<c:forEach var="lost" items="${list}">
-						<tr>
-							<td>${lost.lostId}</td>
-							<td>${lost.lostCategory}</td>
-							<td>${lost.lostDesc}</td>
-							<td>${lost.lostLocation}</td>
-							<td>${lost.lostDate}</td>
-							<td>${lost.lostPrize}</td>
-						</tr>
+						<li>
+							<strong>${lost.lostCategory} </strong> - ${lost.lostDesc}
+						</li>
 					</c:forEach>
-
-				</tbody>
-			</table>
+				</ul>
+			</div>
 		</form:form>
 	</div>
 		
+	<div style= "width:30%;display:inline-block;margin:1.5%;">
+	<form:form class="form-horizontal">
+		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" href="">Click here!</a></span>
+			<div class="found-list-div list-div blinking-found-border">
+				<div class="found-list-header list-header blinking-found"><strong>FOUND BOARD</strong></div>
+				<ul class="found-list list">
+					<c:forEach var="lost" items="${list}">
+						<li>
+							<strong>${lost.lostCategory} </strong> - ${lost.lostDesc}
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</form:form>
+	</div>
 		<br>
 	</div>
 <script type="text/javascript" async>
