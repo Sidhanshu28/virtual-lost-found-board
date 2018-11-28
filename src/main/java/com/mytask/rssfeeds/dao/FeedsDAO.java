@@ -38,20 +38,12 @@ public class FeedsDAO  {
 	}
 	
 	
-	/** saveItem function to parse XML and then getting its required attributes and then storing in database
-	returns null */
-	public void saveItem(Entries f) throws Exception{
-//		String xmlstring = convertXMLtoString(f.getFeedUrl()); /** getting XML from URL as a string */
-//        Element element = getRootElementFromXML(xmlstring); /** converting XML string into a DOM element so as to read it's attributes. */
-//        pushAllItems(element,f); /** calling function to read attributes and push them to database in a loop */
-	}
-	
 	
 	/** getAllFeeds function to get all RSS feeds from database and binding the list in table
 	returns list (array) */
 	public List<Entries> getLostEntries() {
 		
-		String query = "select * from lost_table";
+		String query = "select * from lost_table order by date_lt desc limit 8";
 		return template.query(query,new ResultSetExtractor<List<Entries>>(){  
 		    
 		     public List<Entries> extractData(ResultSet rs) throws SQLException,  
@@ -63,7 +55,7 @@ public class FeedsDAO  {
 		        	Entries e=new Entries();  
 		        e.setLostId(rs.getInt(1));  
 		        e.setLostCategory(rs.getString(2));
-		        e.setLostDesc(rs.getString(3));  
+		        e.setLostDesc(rs.getString(3).split("\\s").length > 1 ? rs.getString(3).split("\\s")[0] + " " + rs.getString(3).split("\\s")[1] +  "..." : rs.getString(3) + "...");  
 		        e.setLostLocation(rs.getString(4));
 		        e.setLostDate(rs.getString(5));
 		        e.setLostPrize(rs.getString(6));
@@ -79,7 +71,7 @@ public class FeedsDAO  {
 	returns list (array) */
 	public List<Entries> getFoundEntries() {
 		
-		String query = "select * from found_table";
+		String query = "select * from found_table order by date_ft desc limit 8";
 		return template.query(query,new ResultSetExtractor<List<Entries>>(){  
 		    
 		     public List<Entries> extractData(ResultSet rs) throws SQLException,  
@@ -91,7 +83,7 @@ public class FeedsDAO  {
 		        	Entries e=new Entries();  
 		        e.setFoundId(rs.getInt(1));  
 		        e.setFoundCategory(rs.getString(2));
-		        e.setFoundDesc(rs.getString(3));  
+		        e.setFoundDesc(rs.getString(3).split("\\s").length > 1 ? rs.getString(3).split("\\s")[0] + " " + rs.getString(3).split("\\s")[1] +  "..." : rs.getString(3) + "...");  
 		        e.setFoundLocation(rs.getString(4));
 		        e.setFoundDate(rs.getString(5));
 //		        e.setFoundPrize(rs.getString(6));

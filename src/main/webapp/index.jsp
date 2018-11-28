@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Rss Feeds</title>
+	<title>Virtual Lost and Found Board</title>
 </head>
 <body>
 </body>

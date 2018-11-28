@@ -75,16 +75,27 @@ public class FeedsController {
         return new ModelAndView("foundentry");  
     } 
 	
-	
+	/** calling function to get list of feeds to display them on viewfeeds model */
+	@RequestMapping("/viewallentries/lost")  
+    public ModelAndView lostEntries(ModelMap model){  
+        Entries entries = new Entries();
+		model.addAttribute("lost-entries", entries);
+        return new ModelAndView("lostentry");  
+    } 
+	/** calling function to get list of feeds to display them on viewfeeds model */
+	@RequestMapping("/viewallentries/claim")  
+    public ModelAndView claimEntries(ModelMap model){  
+        Entries entries = new Entries();
+		model.addAttribute("lost-entries", entries);
+        return new ModelAndView("lostentry");  
+    } 
+	/** calling function to get list of feeds to display them on viewfeeds model */
+	@RequestMapping("/viewallentries/found")  
+    public ModelAndView foundEntries(ModelMap model){  
+        Entries entries = new Entries();
+		model.addAttribute("lost-entries", entries);
+        return new ModelAndView("lostentry");  
+    } 
 
-//	 
-//	/** It deletes record for the given id  and redirects to /viewFeeds  */
-//	    @RequestMapping(value="/deletefeed/{id}",method = RequestMethod.GET)  
-//	    public ModelAndView delete(@PathVariable int id){  
-//	    	feedsDao.delete(id);  
-//	        return new ModelAndView("redirect:/viewFeeds");  
-//	    }  
-//	     
-	
 
 }

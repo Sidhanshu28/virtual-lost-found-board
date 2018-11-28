@@ -6,7 +6,7 @@
 
 .boxes{
 	width:30%;
-	display:inline-block;
+	display:inline-grid;
 	margin:1.5%;
 }
 .header-line{
@@ -15,7 +15,7 @@
 }
 
 .list-div{
-	min-height:450px;
+	min-height:480px;
 	margin:1.5%;
 }
 
@@ -26,6 +26,7 @@
 }
 .list{
 	list-style:none;
+	min-height:380px;
 	color:black;
 	text-align:left;
     padding: 10 10 0 40 !important;
@@ -34,7 +35,6 @@
 
 .list li{
 	border-top: 1px solid black;
-    border-bottom: 1px solid black;
     padding: 8 0 8 0;
 }
 .list li:hover{
@@ -80,7 +80,7 @@
 }
 
 .formBox{
-	height: 450px;
+	height: 480px;
     margin-top: 40px;
     padding-top: 70px;
     border-top: 1px solid black;
