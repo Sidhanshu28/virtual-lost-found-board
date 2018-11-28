@@ -32,13 +32,19 @@
     padding: 10 10 0 40 !important;
 	font-size:20px;
 }
-
+a > strong{
+	background: lightgray;
+    border-radius: 10px;
+    padding: 5px;
+    color:black;
+}
 .list li{
 	border-top: 1px solid black;
     padding: 8 0 8 0;
 }
 .list li:hover{
-	bakcground-color:lightgrey;
+    opacity: 0.5;
+    background: lightcyan;
 }
 .lost-link{
 	color:yellow;
@@ -84,6 +90,10 @@
     margin-top: 40px;
     padding-top: 70px;
     border-top: 1px solid black;
+}
+
+a.viewall:hover{
+	font-weight:600;
 }
 
 a:hover, a:visited, a:focus{

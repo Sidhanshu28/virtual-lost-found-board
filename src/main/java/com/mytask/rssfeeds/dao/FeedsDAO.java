@@ -90,7 +90,7 @@ public class FeedsDAO  {
 		        e.setCategory(rs.getString(2));
 		        e.setDesc(rs.getString(3)); 
 		        e.setLocation(rs.getString(4));
-		        e.setDate(rs.getString(5).split("\\s"));
+		        e.setDate(rs.getString(5).split("\\s")[0]);
 //		        e.setPrize(rs.getString(6));
 		        lost_list.add(e);  
 		        }  

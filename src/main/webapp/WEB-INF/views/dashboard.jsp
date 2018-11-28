@@ -22,17 +22,17 @@
 	<div class="container-fluid">
 	<div class="boxes">
 		<form:form class="form-horizontal">
-			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" href="lostentry">Click here!</a></span>
+			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" style="color:yellow" href="lostentry">Click here!</a></span>
 			<div class="lost-list-div list-div blinking-lost-border">
-				<div class="lost-list-header list-header blinking-lost"><strong>LOST BOARD</strong></div>
+				<div class="lost-list-header list-header blinking-lost"><strong>LOST</strong></div>
 				<ul class="lost-list list">
 					<c:forEach var="lost" items="${lost_list}">
 						<li>
-							<a href="viewentry/${lost.id}"><strong>#${lost.category} </strong> - ${lost.desc}</a>
+							<a href="viewentry/${lost.id}"><strong>#${lost.category} </strong> ${lost.desc}</a>
 						</li>
 					</c:forEach>
 				</ul>
-				<span><a href="viewallentries/lost" style="color:black;float:right;margin-right:20px">view all -></a></span>
+				<span><a class="viewall" href="viewallentries/lost" style="color:black;float:right;margin-right:20px">view all -></a></span>
 			</div>
 		</form:form>
 	</div>
@@ -40,32 +40,32 @@
 	<form:form class="form-horizontal">
 		<span style="margin-left:75px;color:black">&nbsp;</span>
 					<div class="claim-list-div list-div">
-				<div class="claim-list-header list-header"><strong>CLAIM BOARD</strong></div>
+				<div class="claim-list-header list-header"><strong>CLAIM</strong></div>
 				<ul class="claim-list list">
 					<c:forEach var="claim" items="${claim_list}">
 						<li>
-							<a href="viewentry/${claim.id}"><strong>#${claim.category} </strong> - ${claim.desc}</a>
+							<a href="viewentry/${claim.id}"><strong>#${claim.category} </strong> ${claim.desc}</a>
 						</li>
 					</c:forEach>
 				</ul>
-				<span><a href="viewallentries/claim" style="color:black;float:right;margin-right:20px">view all -></a></span>
+				<span><a class="viewall" href="viewallentries/claim" style="color:black;float:right;margin-right:20px">view all -></a></span>
 			</div>
 		</form:form>
 	</div>
 		
 	<div class="boxes">
 	<form:form class="form-horizontal">
-		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" href="foundentry">Click here!</a></span>
+		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" style="color:yellow" href="foundentry">Click here!</a></span>
 			<div class="found-list-div list-div blinking-found-border">
-				<div class="found-list-header list-header blinking-found"><strong>FOUND BOARD</strong></div>
+				<div class="found-list-header list-header blinking-found"><strong>FOUND</strong></div>
 				<ul class="found-list list">
 					<c:forEach var="found" items="${found_list}">
 						<li>
-							<a href="viewentry/${found.id}"><strong>#${found.category} </strong> - ${found.desc}</a>
+							<a href="viewentry/${found.id}"><strong>#${found.category} </strong> ${found.desc}</a>
 						</li>
 					</c:forEach>
 				</ul>
-				<span><a href="viewallentries/found" style="color:black;float:right;margin-right:20px">view all -></a></span>
+				<span><a class="viewall" href="viewallentries/found" style="color:black;float:right;margin-right:20px">view all -></a></span>
 			</div>
 		</form:form>
 	</div>

@@ -25,10 +25,10 @@
 		<h5><a href="/rssfeeds/dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
 	</div>
 		<div class="container-fluid">
-			<ul class="entries-list list" style="padding-top:70px !important;margin:auto;width:75%;">
+			<ul class="entries-list list" style="padding:70px 0 60px 0 !important;margin:auto;width:75%;">
 					<c:forEach var="entry" items="${entries_list}">
 						<li>
-							<a href="viewentry/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date} at ${entry.location}
+							<a href="viewentry/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date} at <strong>${entry.location}</strong>
 						</li>
 					</c:forEach>
 				</ul>
