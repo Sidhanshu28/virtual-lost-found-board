@@ -28,7 +28,7 @@
 			<ul class="entries-list list" style="padding-top:70px !important;margin:auto;width:75%;">
 					<c:forEach var="entry" items="${entries_list}">
 						<li>
-							<a href="viewentry/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date}
+							<a href="viewentry/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date} at ${entry.location}
 						</li>
 					</c:forEach>
 				</ul>
