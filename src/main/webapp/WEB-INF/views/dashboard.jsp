@@ -22,13 +22,13 @@
 	
 	<div class="boxes">
 		<form:form class="form-horizontal">
-			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" href="/rssfeeds/lostEntry">Click here!</a></span>
+			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" href="/rssfeeds/lostentry">Click here!</a></span>
 			<div class="lost-list-div list-div blinking-lost-border">
 				<div class="lost-list-header list-header blinking-lost"><strong>LOST BOARD</strong></div>
 				<ul class="lost-list list">
-					<c:forEach var="lost" items="${list}">
+					<c:forEach var="lost" items="${lost_list}">
 						<li>
-							<strong>${lost.lostCategory} </strong> - ${lost.lostDesc}
+							<a href="/rssfeeds/viewentry/${lost.lostId}"><strong>#${lost.lostCategory} </strong> - ${lost.lostDesc}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -40,9 +40,9 @@
 					<div class="claim-list-div list-div">
 				<div class="claim-list-header list-header"><strong>CLAIM BOARD</strong></div>
 				<ul class="claim-list list">
-					<c:forEach var="lost" items="${list}">
+					<c:forEach var="claim" items="${claim_list}">
 						<li>
-							<strong>${lost.lostCategory} </strong> - ${lost.lostDesc}
+							<a href="/rssfeeds/viewentry/${claim.claimId}"><strong>#${claim.claimCategory} </strong> - ${claim.claimDesc}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -52,13 +52,13 @@
 		
 	<div class="boxes">
 	<form:form class="form-horizontal">
-		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" href="/rssfeeds/foundEntry">Click here!</a></span>
+		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" href="../foundentry">Click here!</a></span>
 			<div class="found-list-div list-div blinking-found-border">
 				<div class="found-list-header list-header blinking-found"><strong>FOUND BOARD</strong></div>
 				<ul class="found-list list">
-					<c:forEach var="lost" items="${list}">
+					<c:forEach var="found" items="${found_list}">
 						<li>
-							<strong>${lost.lostCategory} </strong> - ${lost.lostDesc}
+							<a href="/rssfeeds/viewentry/${found.foundId}"><strong>#${found.foundCategory} </strong> - ${found.foundDesc}</a>
 						</li>
 					</c:forEach>
 				</ul>

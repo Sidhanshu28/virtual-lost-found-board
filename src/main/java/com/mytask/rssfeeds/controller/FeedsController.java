@@ -1,6 +1,8 @@
 package com.mytask.rssfeeds.controller;
 
-//import java.util.List;
+//import java.awt.List;
+
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -31,28 +33,46 @@ public class FeedsController {
 	 
 	 
 	 /**calling save function to post values provided by user to the database  and redirects to /viewFeeds */ 
-	@RequestMapping(value ="/save",method = RequestMethod.POST)
-	public String savingFeed(@Valid Entries entries,
+	@RequestMapping(value ="/save-lost-entry",method = RequestMethod.POST)
+	public String savingLostFeed(@Valid Entries entries,
 			BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception {
-		feedsDao.save(entries);		
-		return "redirect:/viewFeeds";
+		feedsDao.save(entries,"lost");		
+		return "redirect:/dashboard";
 	}
 	
+	 /**calling save function to post values provided by user to the database  and redirects to /viewFeeds */ 
+		@RequestMapping(value ="/save-found-entry",method = RequestMethod.POST)
+		public String savingFoundFeed(@Valid Entries entries,
+				BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception {
+			feedsDao.save(entries,"found");		
+			return "redirect:/dashboard";
+		}
+	
 	/** calling function to get list of feeds to display them on viewfeeds model */
-	@RequestMapping("/viewFeeds")  
-    public ModelAndView viewfeeds(ModelMap model){  
-//        List<Entries> list=feedsDao.getAllFeeds();
-//        Entries entries = new Entries();
-//		model.addAttribute("entries", entries);
-        return new ModelAndView("viewfeeds");  
+	@RequestMapping("/dashboard")  
+    public ModelAndView viewentries(ModelMap model){  
+        List<Entries> lost_list=feedsDao.getLostEntries();
+//        List<Entries> lost_list=feedsDao.getClaimEntries();
+        List<Entries> found_list=feedsDao.getFoundEntries();
+		model.addAttribute("found_list", found_list);
+		model.addAttribute("lost_list", lost_list);
+        return new ModelAndView("dashboard");  
     }
 	
 	/** calling function to get list of feeds to display them on viewfeeds model */
-	@RequestMapping("/lostEntry")  
+	@RequestMapping("/lostentry")  
     public ModelAndView lostEntry(ModelMap model){  
         Entries entries = new Entries();
-		model.addAttribute("entries", entries);
+		model.addAttribute("lost-entries", entries);
         return new ModelAndView("lostentry");  
+    } 
+	
+	/** calling function to get list of feeds to display them on viewfeeds model */
+	@RequestMapping("/foundentry")  
+    public ModelAndView foundEntry(ModelMap model){  
+        Entries entries = new Entries();
+		model.addAttribute("found-entries", entries);
+        return new ModelAndView("foundentry");  
     } 
 	
 	

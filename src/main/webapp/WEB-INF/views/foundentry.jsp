@@ -19,19 +19,19 @@
 		<h1 align="center"><strong>VIRTUAL BOARD</strong></h1>
 	</div>
 	<div class="header-line">
-		<h4 align="center">Welcome to the Virtual Lost and Found Board</h4>
+		<h4 align="center">Welcome to the Virtual found and Found Board</h4>
 	</div>
 	<div class="back-link">
 		<h5><a href="/rssfeeds/dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
 	</div>
 		<div class="formBox">
-		<form:form method="POST" class="form-form" name="loginform" modelAttribute="lost-entries" action="save-lost-entry">
+		<form:form method="POST" class="form-form" name="loginform" modelAttribute="found-entries" action="save-found-entry">
 
 				<div class="form-group row justify-content-md-center">
 					<label for="FeedName" class="col-lg-2 col-form-label text-md-right">
 						<strong>Category :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" path="lostCategory" name="lostcategory" id="lostCategory"
+						<form:input type="text" path="foundCategory" name="foundcategory" id="foundCategory"
 							class="form-control" placeholder="enter category" />
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Description :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="textbox" name="lostdesc" path="lostDesc" id="lostDesc"
+						<form:input type="textbox" name="founddesc" path="foundDesc" id="foundDesc"
 							class="form-control" placeholder="write description here : color, shape, structure" />
 					</div>
 				</div>
@@ -49,8 +49,8 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Location :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" name="lostlocation" path="lostLocation" id="lostLocation"
-							class="form-control" placeholder="where did you lost it?" />
+						<form:input type="text" name="foundlocation" path="foundLocation" id="foundLocation"
+							class="form-control" placeholder="where did you found it?" />
 					</div>
 				</div>
 
@@ -58,17 +58,8 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Date :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" name="lostdate" path="lostDate" id="lostDate"
-							class="form-control" placeholder="when did you lost it?" />
-					</div>
-				</div>
-
-				<div class="form-group row justify-content-md-center">
-					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
-											<strong>Bounty (in dollars):</strong></label>
-					<div class="col-lg-4">
-						<form:input type="text" name="lostprize" path="lostPrize" id="lostPrize"
-							class="form-control" placeholder="Is is really important? Add bounty." />
+						<form:input type="text" name="founddate" path="foundDate" id="foundDate"
+							class="form-control" placeholder="when did you found it?" />
 					</div>
 				</div>
 

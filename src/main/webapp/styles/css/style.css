@@ -28,9 +28,16 @@
 	list-style:none;
 	color:black;
 	text-align:left;
+    padding: 10 10 0 40 !important;
 	font-size:20px;
 }
-.list:hover{
+
+.list li{
+	border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 8 0 8 0;
+}
+.list li:hover{
 	bakcground-color:lightgrey;
 }
 .lost-link{
