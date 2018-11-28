@@ -31,7 +31,7 @@
 					<label for="FeedName" class="col-lg-2 col-form-label text-md-right">
 						<strong>Category :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" path="foundCategory" name="foundcategory" id="foundCategory"
+						<form:input type="text" path="category" name="category" id="category"
 							class="form-control" placeholder="enter category" />
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Description :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="textbox" name="founddesc" path="foundDesc" id="foundDesc"
+						<form:input type="textbox" name="desc" path="desc" id="desc"
 							class="form-control" placeholder="write description here : color, shape, structure" />
 					</div>
 				</div>
@@ -49,7 +49,7 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Location :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" name="foundlocation" path="foundLocation" id="foundLocation"
+						<form:input type="text" name="location" path="location" id="location"
 							class="form-control" placeholder="where did you found it?" />
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Date :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" name="founddate" path="foundDate" id="foundDate"
+						<form:input type="text" name="date" path="date" id="date"
 							class="form-control" placeholder="when did you found it?" />
 					</div>
 				</div>

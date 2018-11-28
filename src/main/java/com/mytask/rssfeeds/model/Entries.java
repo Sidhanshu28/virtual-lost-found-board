@@ -20,122 +20,122 @@ public class Entries implements Serializable {
 	/**  lost table variables */
 	
 	@Id
-	private int lost_id;
+	private int id;
 	
 	@Size(min=3, max=20)
-	private String lost_category;
+	private String category;
 	
 	@NotEmpty
-	private String lost_desc;
+	private String desc;
 
-	private String lost_location;
+	private String location;
 
-	private String lost_date;
+	private String date;
 
-	private String lost_prize;
+	private String prize;
 
 	
-	/**  found table variables */
-	@Id
-	private int found_id;
-	
-	@Size(min=3, max=20)
-	private String found_category;
-	
-	@NotEmpty
-	private String found_desc;
+//	/**  found table variables */
+//	@Id
+//	private int found_id;
+//	
+//	@Size(min=3, max=20)
+//	private String found_category;
+//	
+//	@NotEmpty
+//	private String found_desc;
+//
+//	private String found_location;
+//
+//	private String found_date;
 
-	private String found_location;
-
-	private String found_date;
-
-	public int getLostId() {
-		return this.lost_id;
+	public int getId() {
+		return this.id;
 	}
 	
-	public void setLostId(int lid) {
-		this.lost_id = lid;
+	public void setId(int lid) {
+		this.id = lid;
 	}
 	
-	public String getLostCategory() {
-		return this.lost_category;
+	public String getCategory() {
+		return this.category;
 	}
 
-	public void setLostCategory(String lcat) {
-		this.lost_category = lcat;
+	public void setCategory(String lcat) {
+		this.category = lcat;
 	}
 
-	public String getLostDesc() {
-		return this.lost_desc;
+	public String getDesc() {
+		return this.desc;
 	}
 
-	public void setLostDesc(String ldesc) {
-		this.lost_desc = ldesc;
+	public void setDesc(String ldesc) {
+		this.desc = ldesc;
 	}
 
-	public String getLostLocation() {
-		return this.lost_location;
+	public String getLocation() {
+		return this.location;
 	}
 
-	public void setLostLocation(String lloc) {
-		this.lost_location = lloc;
+	public void setLocation(String lloc) {
+		this.location = lloc;
 	}
  
-	public String getLostDate() {
-		return this.lost_date;
+	public String getDate() {
+		return this.date;
 	}
 
-	public void setLostDate(String ldate) {
-		this.lost_date = ldate;
+	public void setDate(String ldate) {
+		this.date = ldate;
 	}
 
-	public String getLostPrize() {
-		return this.lost_prize;
+	public String getPrize() {
+		return this.prize;
 	}
 
-	public void setLostPrize(String lprize) {
-		this.lost_prize = lprize;
+	public void setPrize(String lprize) {
+		this.prize = lprize;
 	}
-
-	public int getFoundId() {
-		return this.found_id;
-	}
-	
-	public void setFoundId(int fid) {
-		this.found_id = fid;
-	}
-	
-	public String getFoundCategory() {
-		return this.found_category;
-	}
-
-	public void setFoundCategory(String fcat) {
-		this.found_category = fcat;
-	}
-
-	public String getFoundDesc() {
-		return this.found_desc;
-	}
-
-	public void setFoundDesc(String fdesc) {
-		this.found_desc = fdesc;
-	}
-
-	public String getFoundLocation() {
-		return this.found_location;
-	}
-
-	public void setFoundLocation(String floc) {
-		this.found_location = floc;
-	}
- 
-	public String getFoundDate() {
-		return this.found_date;
-	}
-
-	public void setFoundDate(String fdate) {
-		this.found_date = fdate;
-	}
+//
+//	public int getFoundId() {
+//		return this.found_id;
+//	}
+//	
+//	public void setFoundId(int fid) {
+//		this.found_id = fid;
+//	}
+//	
+//	public String getFoundCategory() {
+//		return this.found_category;
+//	}
+//
+//	public void setFoundCategory(String fcat) {
+//		this.found_category = fcat;
+//	}
+//
+//	public String getFoundDesc() {
+//		return this.found_desc;
+//	}
+//
+//	public void setFoundDesc(String fdesc) {
+//		this.found_desc = fdesc;
+//	}
+//
+//	public String getFoundLocation() {
+//		return this.found_location;
+//	}
+//
+//	public void setFoundLocation(String floc) {
+//		this.found_location = floc;
+//	}
+// 
+//	public String getFoundDate() {
+//		return this.found_date;
+//	}
+//
+//	public void setFoundDate(String fdate) {
+//		this.found_date = fdate;
+//	}
 
 
 }

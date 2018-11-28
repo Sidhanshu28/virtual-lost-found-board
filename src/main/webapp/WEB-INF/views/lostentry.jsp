@@ -19,7 +19,7 @@
 		<h1 align="center"><strong>VIRTUAL BOARD</strong></h1>
 	</div>
 	<div class="header-line">
-		<h4 align="center">Welcome to the Virtual Lost and Found Board</h4>
+		<h4 align="center">Welcome to the Virtual  and Found Board</h4>
 	</div>
 	<div class="back-link">
 		<h5><a href="/rssfeeds/dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
@@ -31,7 +31,7 @@
 					<label for="FeedName" class="col-lg-2 col-form-label text-md-right">
 						<strong>Category :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" path="lostCategory" name="lostcategory" id="lostCategory"
+						<form:input type="text" path="category" name="category" id="category"
 							class="form-control" placeholder="enter category" />
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Description :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="textbox" name="lostdesc" path="lostDesc" id="lostDesc"
+						<form:input type="textbox" name="desc" path="desc" id="desc"
 							class="form-control" placeholder="write description here : color, shape, structure" />
 					</div>
 				</div>
@@ -49,8 +49,8 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Location :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" name="lostlocation" path="lostLocation" id="lostLocation"
-							class="form-control" placeholder="where did you lost it?" />
+						<form:input type="text" name="location" path="location" id="location"
+							class="form-control" placeholder="where did you  it?" />
 					</div>
 				</div>
 
@@ -58,8 +58,8 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Date :</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" name="lostdate" path="lostDate" id="lostDate"
-							class="form-control" placeholder="when did you lost it?" />
+						<form:input type="text" name="date" path="date" id="date"
+							class="form-control" placeholder="when did you  it?" />
 					</div>
 				</div>
 
@@ -67,7 +67,7 @@
 					<label for="feedUrl" class="col-lg-2 col-form-label text-md-right">
 											<strong>Bounty (in dollars):</strong></label>
 					<div class="col-lg-4">
-						<form:input type="text" name="lostprize" path="lostPrize" id="lostPrize"
+						<form:input type="text" name="prize" path="prize" id="prize"
 							class="form-control" placeholder="Is is really important? Add bounty." />
 					</div>
 				</div>
