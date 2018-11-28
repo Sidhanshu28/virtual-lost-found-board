@@ -1,6 +1,6 @@
 package com.mytask.rssfeeds.controller;
 
-import java.util.List;
+//import java.util.List;
 
 import javax.validation.Valid;
 
@@ -41,10 +41,18 @@ public class FeedsController {
 	/** calling function to get list of feeds to display them on viewfeeds model */
 	@RequestMapping("/viewFeeds")  
     public ModelAndView viewfeeds(ModelMap model){  
-        List<Entries> list=feedsDao.getAllFeeds();
+//        List<Entries> list=feedsDao.getAllFeeds();
+//        Entries entries = new Entries();
+//		model.addAttribute("entries", entries);
+        return new ModelAndView("viewfeeds");  
+    }
+	
+	/** calling function to get list of feeds to display them on viewfeeds model */
+	@RequestMapping("/lostEntry")  
+    public ModelAndView lostEntry(ModelMap model){  
         Entries entries = new Entries();
 		model.addAttribute("entries", entries);
-        return new ModelAndView("viewfeeds","list",list);  
+        return new ModelAndView("lostentry");  
     } 
 	
 	

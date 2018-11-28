@@ -20,9 +20,9 @@
 		<h4 align="center">Welcome to the Virtual Lost and Found Board</h4>
 	</div>
 	
-	<div  style= "width:30%;display:inline-block;margin:1.5%;">
+	<div class="boxes">
 		<form:form class="form-horizontal">
-			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" href="">Click here!</a></span>
+			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" href="/rssfeeds/lostEntry">Click here!</a></span>
 			<div class="lost-list-div list-div blinking-lost-border">
 				<div class="lost-list-header list-header blinking-lost"><strong>LOST BOARD</strong></div>
 				<ul class="lost-list list">
@@ -35,7 +35,7 @@
 			</div>
 		</form:form>
 	</div>
-	<div style= "width:30%;display:inline-block;margin:1.5%;">
+	<div class="boxes">
 	<form:form class="form-horizontal">
 					<div class="claim-list-div list-div">
 				<div class="claim-list-header list-header"><strong>CLAIM BOARD</strong></div>
@@ -50,9 +50,9 @@
 		</form:form>
 	</div>
 		
-	<div style= "width:30%;display:inline-block;margin:1.5%;">
+	<div class="boxes">
 	<form:form class="form-horizontal">
-		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" href="">Click here!</a></span>
+		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" href="/rssfeeds/foundEntry">Click here!</a></span>
 			<div class="found-list-div list-div blinking-found-border">
 				<div class="found-list-header list-header blinking-found"><strong>FOUND BOARD</strong></div>
 				<ul class="found-list list">
@@ -67,73 +67,5 @@
 	</div>
 		<br>
 	</div>
-<script type="text/javascript" async>
-            function validate(e)
-            {
-            	 e.preventDefault(); // this will prevent the submit event.
-            	 var feedname = document.loginform.FeedName.value;
-            	 var feedurl = document.loginform.feedUrl.value;
-            	 var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
-            	 var url = new RegExp(regexQuery,"i");
-            	 var isUrl = url.test(feedurl);
-            	 var flag = true;
-            	 try{
-                	 var isValid = new URL(feedurl);
-            	 }
-            	 catch(e){
-            		flag = false;
-            	 }
-            	 
-		    //if username is empty
-            	    if(feedname=="")
-            	    {
-            	      alert("Feed Name can not be left blank");
-            	      document.loginform.FeedName.focus();
-            	      return false;
-            	    }
-		    //added validation rule for username should carry letters only
-		     else if(feedname != "" && !/^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/.test(feedname)){
-            	    	alert("Only letters are accepted/First ");
-              	      document.loginform.FeedName.focus();
-              	      return false;
-            	    }
-		    //if feedurl is empty
-            	    else if(feedurl=="")
-            	    {
-            	      alert("Feed Url can not be left blank");
-            	      document.loginform.feedUrl.focus();
-            	      return false;
-            	    }
-		    //if url is not valid
-            	    else if(!isUrl || !flag){
-                    	 alert("Invalid url/no response");
-                	      document.loginform.feedUrl.focus();
-                	      return false;
-            	    }
-		    //if inputs gets validated-  will trigger submit event
-            	    else {
-            	        document.loginform.submit(); // fire submit event
-            	    }
-            	    
-            };
-</script>
-	
-<script type="text/javascript">
-//script to make responsive design and resizing table by adding/removing class
-	(function($) {
-    var $window = $(window),
-        $html = $('html');
-
-    $window.resize(function resize(){
-    	console.log($window.width(),$('.viewfeeds').width());
-        if ($window.width() < 768) {
-        	
-            return $('.viewfeeds').addClass('table-responsive');
-        }
-
-        $('.viewfeeds').removeClass('table-responsive');
-    }).trigger('resize');
-})(jQuery);
-</script>
 </body>
 </html>
