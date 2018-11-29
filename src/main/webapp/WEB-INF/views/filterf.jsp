@@ -24,14 +24,16 @@
 	<div class="back-link">
 		<h5><a href="/rssfeeds/dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
 	</div>
-		<div class="container-fluid">
+		<div class="container-fluid" style="text-align:center;padding-bottom:80px">
+			These entries are matching results with your data entered, you can claim if you find it belongs to you.
 			<ul class="entries-list list" style="padding:70px 0 60px 0 !important;margin:auto;width:75%;">
 					<c:forEach var="entry" items="${entries_list}">
 						<li>
-							<a href="viewentry/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date} at <strong>${entry.location}</strong>
+							<a href="viewentry/found/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date} at <strong>${entry.location}</strong>
 						</li>
 					</c:forEach>
 				</ul>
+		<span>Couldn't find yours? Anyway, <a href="save-found-entry"><button class="btn btn-default" id="found-button">Register your entry</button></a></span>
 		</div>
 	</div>
 

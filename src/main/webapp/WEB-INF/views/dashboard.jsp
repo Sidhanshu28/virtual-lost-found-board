@@ -28,7 +28,7 @@
 				<ul class="lost-list list">
 					<c:forEach var="lost" items="${lost_list}">
 						<li>
-							<a href="viewentry/${lost.id}"><strong>#${lost.category} </strong> ${lost.desc}</a>
+							<a href="viewentry/lost/${lost.id}"><strong>#${lost.category} </strong> ${lost.desc}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -44,7 +44,7 @@
 				<ul class="claim-list list">
 					<c:forEach var="claim" items="${claim_list}">
 						<li>
-							<a href="viewentry/${claim.id}"><strong>#${claim.category} </strong> ${claim.desc}</a>
+							<a href="viewentry/claim/${claim.id}"><strong>#${claim.category} </strong> ${claim.desc}</a>
 						</li>
 					</c:forEach>
 				</ul>
@@ -61,7 +61,7 @@
 				<ul class="found-list list">
 					<c:forEach var="found" items="${found_list}">
 						<li>
-							<a href="viewentry/${found.id}"><strong>#${found.category} </strong> ${found.desc}</a>
+							<a href="viewentry/found/${found.id}"><strong>#${found.category} </strong> ${found.desc}</a>
 						</li>
 					</c:forEach>
 				</ul>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
@@ -31,23 +32,67 @@ public class FeedsController {
 	 WebApplicationContext ctx = ContextLoader.getCurrentWebApplicationContext();
 	 
 	 
-	 /**calling save function to post values provided by user to the database  and redirects to /viewFeeds */ 
-	@RequestMapping(value ="/save-lost-entry",method = RequestMethod.POST)
-	public String savingLostFeed(@Valid Entries entries,
+	 @RequestMapping(value ="/filter-entry-found",method = RequestMethod.POST)
+	 public String savingFoundFeed(@Valid Entries entries,
+				BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception {
+			boolean filter = feedsDao.isThereAnyMatch(entries, "found");
+			if(filter) {
+				feedsDao.saveTemp(entries,"found");
+				List<Entries> entries_list=feedsDao.getFilterEntries(entries, "found");
+				 model.addAttribute("entries_list",entries_list);
+				return "redirect:/filter-entries-found";
+			}
+			else {
+				feedsDao.save(entries,"found");
+				return "redirect:/dashboard";
+				}
+		}
+	 
+	 @RequestMapping(value ="/filter-entry-lost",method = RequestMethod.POST)
+	 public String savingLostFeed(@Valid Entries entries,
+				BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception {
+			boolean filter = feedsDao.isThereAnyMatch(entries, "lost");
+			if(filter) {
+				feedsDao.saveTemp(entries,"lost");
+				 List<Entries> entries_list=feedsDao.getFilterEntries(entries, "lost");
+				 model.addAttribute("entries_list",entries_list);
+				 return "redirect:/filter-entries-lost";
+			}
+			else {
+				feedsDao.save(entries,"lost");	
+				return "redirect:/dashboard";
+				}
+		}
+	 
+		@RequestMapping(value ="/filter-entries-lost")
+	public ModelAndView filterLostEntriesView(Entries entries, ModelMap model) {
+		 List<Entries> entries_list=feedsDao.getFilterEntries(entries, "lost");
+		 model.addAttribute("entries_list",entries_list);
+	        return new ModelAndView("filterl");   
+	}
+	
+	@RequestMapping(value ="/filter-entries-found")
+	public ModelAndView filterFoundEntriesView(Entries entries, ModelMap model) {
+		 List<Entries> entries_list=feedsDao.getFilterEntries(entries, "found");
+		 model.addAttribute("entries_list",entries_list);
+	        return new ModelAndView("filterf");   
+	}
+
+		@RequestMapping(value ="/save-lost-entry")
+	public String savingLFeed(@Valid Entries entries,
 			BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception {
-		feedsDao.save(entries,"lost");		
+		feedsDao.saveFinal("found");		
 		return "redirect:/dashboard";
 	}
 	
-	 /**calling save function to post values provided by user to the database  and redirects to /viewFeeds */ 
-		@RequestMapping(value ="/save-found-entry",method = RequestMethod.POST)
-		public String savingFoundFeed(@Valid Entries entries,
+	 	@RequestMapping(value ="/save-found-entry")
+		public String savingFFeed(@Valid Entries entries,
 				BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception {
-			feedsDao.save(entries,"found");		
+			feedsDao.saveFinal("found");		
 			return "redirect:/dashboard";
 		}
 	
-	/** calling function to get list of feeds to display them on viewfeeds model */
+
 	@RequestMapping("/dashboard")  
     public ModelAndView viewentries(ModelMap model){  
         List<Entries> lost_list=feedsDao.getEntries("lost");
@@ -59,7 +104,7 @@ public class FeedsController {
         return new ModelAndView("dashboard");  
     }
 	
-	/** calling function to get list of feeds to display them on viewfeeds model */
+	
 	@RequestMapping("/lostentry")  
     public ModelAndView lostEntry(ModelMap model){  
         Entries entries = new Entries();
@@ -67,7 +112,7 @@ public class FeedsController {
         return new ModelAndView("lostentry");  
     } 
 	
-	/** calling function to get list of feeds to display them on viewfeeds model */
+	
 	@RequestMapping("/foundentry")  
     public ModelAndView foundEntry(ModelMap model){  
         Entries entries = new Entries();
@@ -75,27 +120,72 @@ public class FeedsController {
         return new ModelAndView("foundentry");  
     } 
 	
-	/** calling function to get list of feeds to display them on viewfeeds model */
+	
 	@RequestMapping("/viewallentries/lost")  
     public ModelAndView lostEntries(ModelMap model){  
 		List<Entries> entries_list=feedsDao.getAllEntries("lost");
 		model.addAttribute("entries_list", entries_list);
-        return new ModelAndView("viewallentries");  
+        return new ModelAndView("viewallentriesL");  
     } 
-	/** calling function to get list of feeds to display them on viewfeeds model */
+	
 	@RequestMapping("/viewallentries/claim")  
     public ModelAndView claimEntries(ModelMap model){  
 		List<Entries> entries_list=feedsDao.getAllEntries("claim");
 		model.addAttribute("entries_list",entries_list);
-        return new ModelAndView("viewallentries");   
+        return new ModelAndView("viewallentriesC");   
     } 
-	/** calling function to get list of feeds to display them on viewfeeds model */
+	
 	@RequestMapping("/viewallentries/found")  
     public ModelAndView foundEntries(ModelMap model){  
 		List<Entries> entries_list=feedsDao.getAllEntries("found");
 		model.addAttribute("entries_list",entries_list);
-        return new ModelAndView("viewallentries"); 
+        return new ModelAndView("viewallentriesF"); 
     } 
 
+	@RequestMapping("/viewentry/lost/{id}")  
+    public ModelAndView viewfeedByIdL(ModelMap model,@PathVariable int id){  
+        List<Entries> list=feedsDao.getEntryById(id, "lost");
+        return new ModelAndView("viewentryByIdL","list",list);  
+    }
+	@RequestMapping("/viewentry/found/{id}")  
+    public ModelAndView viewfeedByIdF(ModelMap model,@PathVariable int id){  
+        List<Entries> list=feedsDao.getEntryById(id, "found");
+        return new ModelAndView("viewentryByIdF","list",list);  
+    } 
+	@RequestMapping("/viewentry/claim/{id}")  
+    public ModelAndView viewfeedByIdC(ModelMap model,@PathVariable int id){  
+        List<Entries> list=feedsDao.getEntryById(id, "claim");
+        return new ModelAndView("viewentryByIdC","list",list);  
+    } 
+	
+	@RequestMapping("/claimentrylost/{id}")  
+    public ModelAndView claimlostEntry(ModelMap model){  
+        Entries entries = new Entries();
+		model.addAttribute("lost-claim-entries", entries);
+        return new ModelAndView("claimentrylost");  
+    } 
+	
+	
+	@RequestMapping("/claimentryfound/{id}")  
+    public ModelAndView claimfoundEntry(ModelMap model){  
+        Entries entries = new Entries();
+		model.addAttribute("found-claim-entries", entries);
+        return new ModelAndView("claimentryfound");  
+    } 
+	
+	@RequestMapping(value="/submit-claim-lost/{id}",method = RequestMethod.POST)  
+    public String submitLostClaim(@Valid Entries entries,@PathVariable int id,
+			BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception{  
+        feedsDao.saveClaim(entries,id,"lost");
+        return "redirect:/dashboard";  
+    } 
+	
+	
+	@RequestMapping(value="/submit-claim-found/{id}",method = RequestMethod.POST)  
+    public String submitFoundClaim(@Valid Entries entries,@PathVariable int id,
+			BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception{  
+		feedsDao.saveClaim(entries,id,"found");
+		return "redirect:/dashboard"; 
+    } 
 
 }

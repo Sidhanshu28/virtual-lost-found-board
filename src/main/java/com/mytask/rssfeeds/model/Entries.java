@@ -28,11 +28,23 @@ public class Entries implements Serializable {
 	@NotEmpty
 	private String desc;
 
+	@NotEmpty
 	private String location;
 
+	@NotEmpty
 	private String date;
 
+	@NotEmpty
 	private String prize;
+	
+	@NotEmpty
+	private String name;
+	 
+	@NotEmpty
+	private String email;
+	
+	@NotEmpty @Size(min=10, max=10)
+	private String contact;
 
 	
 //	/**  found table variables */
@@ -96,46 +108,28 @@ public class Entries implements Serializable {
 	public void setPrize(String lprize) {
 		this.prize = lprize;
 	}
-//
-//	public int getFoundId() {
-//		return this.found_id;
-//	}
-//	
-//	public void setFoundId(int fid) {
-//		this.found_id = fid;
-//	}
-//	
-//	public String getFoundCategory() {
-//		return this.found_category;
-//	}
-//
-//	public void setFoundCategory(String fcat) {
-//		this.found_category = fcat;
-//	}
-//
-//	public String getFoundDesc() {
-//		return this.found_desc;
-//	}
-//
-//	public void setFoundDesc(String fdesc) {
-//		this.found_desc = fdesc;
-//	}
-//
-//	public String getFoundLocation() {
-//		return this.found_location;
-//	}
-//
-//	public void setFoundLocation(String floc) {
-//		this.found_location = floc;
-//	}
-// 
-//	public String getFoundDate() {
-//		return this.found_date;
-//	}
-//
-//	public void setFoundDate(String fdate) {
-//		this.found_date = fdate;
-//	}
 
+	public String getName() {
+		return this.name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getContact() {
+		return this.contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
 }

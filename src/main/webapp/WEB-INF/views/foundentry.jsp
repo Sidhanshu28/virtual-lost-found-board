@@ -25,7 +25,7 @@
 		<h5><a href="/rssfeeds/dashboard" style="float:right;color:yellow;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
 	</div>
 		<div class="formBox">
-		<form:form method="POST" class="form-form" name="entryform" modelAttribute="found-entries" action="save-found-entry" onsubmit="return validate(event);">
+		<form:form method="POST" class="form-form" name="entryform" modelAttribute="found-entries" action="filter-entry-found" onsubmit="return validate(event);">
 
 				<div class="form-group row justify-content-md-center">
 					<label for="FeedName" class="col-lg-2 col-form-label text-md-right">
@@ -99,13 +99,13 @@
          	    }
          	    else if(location=="")
          	    {
-         	      alert("Description can not be left blank");
+         	      alert("Location can not be left blank");
          	      document.entryform.location.focus();
          	      return false;
          	    }
          	    else if(date=="")
          	    {
-         	      alert("Description can not be left blank");
+         	      alert("Date can not be left blank");
          	      document.entryform.date.focus();
          	      return false;
          	    }
