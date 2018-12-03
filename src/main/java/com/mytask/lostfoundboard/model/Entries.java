@@ -1,4 +1,4 @@
-package com.mytask.rssfeeds.model;
+package com.mytask.lostfoundboard.model;
 
 import java.io.Serializable;
 import javax.persistence.*;

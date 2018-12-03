@@ -1,4 +1,4 @@
-package com.mytask.rssfeeds.dao;
+package com.mytask.lostfoundboard.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,10 +8,10 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import com.mytask.rssfeeds.model.Entries;
+import com.mytask.lostfoundboard.model.Entries;
 
 
-public class FeedsDAO  {
+public class LostFoundDAO  {
 	
 	
 	JdbcTemplate template;  
