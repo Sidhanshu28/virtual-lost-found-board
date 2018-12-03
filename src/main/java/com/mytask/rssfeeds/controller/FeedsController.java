@@ -158,23 +158,25 @@ public class FeedsController {
         return new ModelAndView("viewentryByIdC","list",list);  
     } 
 	
-	@RequestMapping("/claimentrylost/{id}")  
-    public ModelAndView claimlostEntry(ModelMap model){  
+	@RequestMapping("/claimentrylost/id={id}")  
+    public ModelAndView claimlostEntry(ModelMap model, @PathVariable int id){  
         Entries entries = new Entries();
 		model.addAttribute("lost-claim-entries", entries);
+		model.addAttribute("id", id);
         return new ModelAndView("claimentrylost");  
     } 
 	
 	
-	@RequestMapping("/claimentryfound/{id}")  
-    public ModelAndView claimfoundEntry(ModelMap model){  
+	@RequestMapping("/claimentryfound/id={id}")  
+    public ModelAndView claimfoundEntry(ModelMap model,@PathVariable int id){  
         Entries entries = new Entries();
 		model.addAttribute("found-claim-entries", entries);
+		model.addAttribute("id", id);
         return new ModelAndView("claimentryfound");  
     } 
 	
 	@RequestMapping(value="/submit-claim-lost/{id}",method = RequestMethod.POST)  
-    public String submitLostClaim(@Valid Entries entries,@PathVariable int id,
+    public String submitLostClaim(Entries entries,@PathVariable int id,
 			BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception{  
         feedsDao.saveClaim(entries,id,"lost");
         return "redirect:/dashboard";  
@@ -182,7 +184,7 @@ public class FeedsController {
 	
 	
 	@RequestMapping(value="/submit-claim-found/{id}",method = RequestMethod.POST)  
-    public String submitFoundClaim(@Valid Entries entries,@PathVariable int id,
+    public String submitFoundClaim(Entries entries,@PathVariable int id,
 			BindingResult result, ModelMap model,RedirectAttributes redirectAttributes) throws Exception{  
 		feedsDao.saveClaim(entries,id,"found");
 		return "redirect:/dashboard"; 

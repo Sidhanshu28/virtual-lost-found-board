@@ -173,7 +173,7 @@ public class FeedsDAO  {
 		String query = "";
 		if(type=="found") { query = "select * from found_table where found_id=" + id;}
 		else if(type=="lost") { query = "select * from lost_table where lost_id=" + id; }
-		else { query = "select * from claim_table where claim_id=" + id; }
+		else { query = "select * from claim_table where id=" + id; }
 		
 		return template.query(query,new ResultSetExtractor<List<Entries>>(){  
 		    
@@ -214,8 +214,8 @@ public class FeedsDAO  {
 	
 	public void deletePrevious(int id, String t) {
 		String sql = "";
-		if(t=="lost")sql = "DELETE FROM lost_table WHERE id="+id+";";
-		else sql = "DELETE FROM found_table WHERE id="+id+";";
+		if(t=="lost")sql = "DELETE FROM lost_table WHERE lost_id="+id+";";
+		else sql = "DELETE FROM found_table WHERE found_id="+id+";";
 		template.update(sql);
 	}
 	

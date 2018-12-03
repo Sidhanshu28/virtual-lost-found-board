@@ -52,7 +52,7 @@
 
 			</tbody>
 		</table>
-		Is it yours? <a href="../../claimentrylost/${entry[0].lost_id}"><button class="btn -btn-default">Claim</button></a>
+		Is it yours? <a href="../../claimentrylost/id=${list[0].id}"><button class="btn -btn-default">Claim</button></a>
 		
 		</div>
 	</div>

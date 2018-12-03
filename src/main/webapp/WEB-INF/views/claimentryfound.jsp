@@ -25,7 +25,7 @@
 		<h5><a href="/rssfeeds/dashboard" style="float:right;margin-right:50px;color:yellow"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
 	</div>
 		<div class="formBox">
-		<form:form method="POST" class="form-form" name="entryform" modelAttribute="found-claim-entries" action="submit-claim-found" onsubmit="return validate(event);">
+		<form:form method="POST" class="form-form" name="entryform" modelAttribute="found-claim-entries" action="../submit-claim-found/${id}" onsubmit="return validate(event);">
 
 				<div class="form-group row justify-content-md-center">
 					<label for="name" class="col-lg-2 col-form-label text-md-right">

@@ -29,7 +29,7 @@
 			<ul class="entries-list list" style="padding:70px 0 60px 0 !important;margin:auto;width:75%;">
 					<c:forEach var="entry" items="${entries_list}">
 						<li>
-							<a href="viewentry/found/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date} at <strong>${entry.location}</strong>
+							<a href="../viewentry/found/${entry.id}"><strong>#${entry.category} </strong> - ${entry.desc} </a> reported on date - ${entry.date} at <strong>${entry.location}</strong>
 						</li>
 					</c:forEach>
 				</ul>
