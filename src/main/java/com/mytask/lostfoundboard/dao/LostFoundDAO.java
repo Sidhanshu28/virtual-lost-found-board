@@ -215,6 +215,7 @@ public class LostFoundDAO  {
 	public void deletePrevious(int id, String t) {
 		String sql = "";
 		if(t=="lost")sql = "DELETE FROM lost_table WHERE lost_id="+id+";";
+		else if(t=="claim")sql = "DELETE FROM claim_table WHERE id="+id+";";
 		else sql = "DELETE FROM found_table WHERE found_id="+id+";";
 		template.update(sql);
 	}
@@ -223,6 +224,5 @@ public class LostFoundDAO  {
 		String sql = "INSERT INTO contact_table(`name`,`email`,`contact`,`type`) values ('"+e.getName()+"','"+e.getEmail()+"','"+e.getContact()+"','"+t+"')";
 		template.update(sql);
 	}
-	
 	
 }

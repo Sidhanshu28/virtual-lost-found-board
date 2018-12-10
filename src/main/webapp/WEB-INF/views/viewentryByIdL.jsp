@@ -22,7 +22,7 @@
 		<h4 align="center">Welcome to the Virtual Lost and Found Board</h4>
 	</div>
 	<div class="back-link">
-		<h5><a href="/rssfeeds/dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
+		<h5><a href="/../dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
 	</div>
 		<div class="container-fluid" style="text-align:center;padding-bottom:70px;">
 			
@@ -52,7 +52,7 @@
 
 			</tbody>
 		</table>
-		Is it yours? <a href="../../claimentrylost/id=${list[0].id}"><button class="btn -btn-default">Claim</button></a>
+		Is it yours? <a href="../../claimentrylost/id=${list[0].id}"><button class="btn -btn-default">Claim</button></a><a href="../../foundentrydelete/id=${list[0].id}"><button class="btn -btn-default">Delete</button></a>
 		
 		</div>
 	</div>

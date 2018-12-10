@@ -22,7 +22,7 @@
 		<h4 align="center">Welcome to the Virtual Lost and Found Board</h4>
 	</div>
 	<div class="back-link">
-		<h5><a href="/rssfeeds/dashboard" style="float:right;margin-right:50px;color:yellow"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
+		<h5><a href="/../dashboard" style="float:right;margin-right:50px;color:yellow"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
 	</div>
 		<div class="formBox">
 		<form:form method="POST" class="form-form" name="entryform" modelAttribute="lost-entries" action="filter-entry-lost" onsubmit="return validate(event);">

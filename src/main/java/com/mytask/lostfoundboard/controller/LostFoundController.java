@@ -189,5 +189,26 @@ public class LostFoundController {
 		lostfoundDao.saveClaim(entries,id,"found");
 		return "redirect:/dashboard"; 
     } 
+	
+
+	@RequestMapping("/lostentrydelete/id={id}")  
+    public String lostEntryDelete(RedirectAttributes redirectAttributes, @PathVariable int id){  
+		lostfoundDao.deletePrevious(id,"lost");
+		return "redirect:/dashboard"; 
+    } 
+	
+	
+	@RequestMapping("/foundentrydelete/id={id}")  
+    public String foundEntryDelete(RedirectAttributes redirectAttributes,@PathVariable int id){  
+		lostfoundDao.deletePrevious(id,"found");
+		return "redirect:/dashboard";
+    } 
+	
+	
+	@RequestMapping("/claimentrydelete/id={id}")  
+    public String claimEntryDelete(RedirectAttributes redirectAttributes,@PathVariable int id){  
+		lostfoundDao.deletePrevious(id,"claim");
+		return "redirect:/dashboard";
+    } 
 
 }
