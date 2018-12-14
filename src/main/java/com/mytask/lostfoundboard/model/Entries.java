@@ -45,21 +45,25 @@ public class Entries implements Serializable {
 	
 	@NotEmpty @Size(min=10, max=10)
 	private String contact;
-
 	
-//	/**  found table variables */
-//	@Id
-//	private int found_id;
-//	
-//	@Size(min=3, max=20)
-//	private String found_category;
-//	
-//	@NotEmpty
-//	private String found_desc;
-//
-//	private String found_location;
-//
-//	private String found_date;
+	@NotEmpty
+	private String firstname;
+	
+	@NotEmpty
+	private String lastname;
+	 
+	@NotEmpty
+	private String username;
+	 
+	@NotEmpty
+	private String useremail;
+	
+	@NotEmpty
+	private String password;
+	
+	@NotEmpty
+	private String error;
+
 
 	public int getId() {
 		return this.id;
@@ -131,5 +135,53 @@ public class Entries implements Serializable {
 
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+
+	public String getFirstName() {
+		return this.firstname;
+	}
+
+	public void setFirstName(String fname) {
+		this.firstname = fname;
+	}
+
+	public String getLastName() {
+		return this.lastname;
+	}
+
+	public void setLastName(String lname) {
+		this.lastname = lname;
+	}
+
+	public String getUserName() {
+		return this.username;
+	}
+
+	public void setUserName(String uname) {
+		this.username = uname;
+	}
+
+	public String getUserEmail() {
+		return this.useremail;
+	}
+
+	public void setUserEmail(String uemail) {
+		this.useremail = uemail;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getError() {
+		return this.password;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 }

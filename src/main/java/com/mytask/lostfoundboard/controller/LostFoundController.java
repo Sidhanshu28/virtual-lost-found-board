@@ -31,6 +31,53 @@ public class LostFoundController {
 	 /** object to get web context loader */
 	 WebApplicationContext ctx = ContextLoader.getCurrentWebApplicationContext();
 	 
+	 @RequestMapping("/home")  
+	    public ModelAndView viewdashboard(RedirectAttributes redirectAttributes){ 
+		 return new ModelAndView("home");  
+	    }
+		
+	 @RequestMapping("/signup")  
+	    public ModelAndView signupPage(ModelMap model, RedirectAttributes redirectAttributes){
+		 	Entries entries = new Entries();
+			model.addAttribute("signup-entries", entries);
+		 	return new ModelAndView("signup"); 
+	    }
+	 
+	 @RequestMapping("/signupentry")  
+	    public String signupentry(Entries e, ModelMap model, RedirectAttributes redirectAttributes){
+		 	lostfoundDao.signup(e);
+		 	return "redirect:/login";
+	    }
+	 
+	 @RequestMapping("/login")  
+	    public ModelAndView loginPage(Entries e, ModelMap model, RedirectAttributes redirectAttributes){
+			model.addAttribute("login-entries", e);
+		 	return new ModelAndView("loginPage"); 
+	    }
+	 @RequestMapping("/login/error")  
+	    public ModelAndView loginPageError(Entries e, ModelMap model, RedirectAttributes redirectAttributes){
+			model.addAttribute("login-entries", e);
+			model.addAttribute("error","incorrect username or password");
+		 	return new ModelAndView("loginPage"); 
+	    }
+	
+	 @RequestMapping("/logout")  
+	    public String logout(RedirectAttributes redirectAttributes){
+		 	return "redirect:/home";
+	    }
+	 
+	 @RequestMapping("/loginCheck")  
+	    public String loginEntry(Entries e, ModelMap model, RedirectAttributes redirectAttributes){
+//			model.addAttribute("login-entries", e);
+			List<Entries> list = lostfoundDao.checkLoginParams(e);
+			if(list.size() > 0) {
+//				model.addAttribute("uname", list);
+				return "redirect:/dashboard/username="+e.getUserName();
+				}
+			else {
+				e.setError("Incorrect username or password");
+				return "redirect:/login/error";} 
+	    }
 	 
 	 @RequestMapping(value ="/filter-entry-found",method = RequestMethod.POST)
 	 public String savingFoundFeed(@Valid Entries entries,
@@ -94,13 +141,28 @@ public class LostFoundController {
 	
 
 	@RequestMapping("/dashboard")  
-    public ModelAndView viewentries(ModelMap model){  
+    public ModelAndView viewentries(ModelMap model, Entries e){  
         List<Entries> lost_list=lostfoundDao.getEntries("lost");
         List<Entries> claim_list=lostfoundDao.getEntries("claim");
         List<Entries> found_list=lostfoundDao.getEntries("found");
 		model.addAttribute("found_list", found_list);
 		model.addAttribute("lost_list", lost_list);
 		model.addAttribute("claim_list", claim_list);
+//		model.addAttribute("uname",e.getUserName());
+//		System.out.println(e.getUserName());
+        return new ModelAndView("dashboard");  
+    }
+	
+	@RequestMapping("/dashboard/username={username}")  
+    public ModelAndView viewentriesUsername(ModelMap model, Entries e , @PathVariable String username){  
+        List<Entries> lost_list=lostfoundDao.getEntries("lost");
+        List<Entries> claim_list=lostfoundDao.getEntries("claim");
+        List<Entries> found_list=lostfoundDao.getEntries("found");
+		model.addAttribute("found_list", found_list);
+		model.addAttribute("lost_list", lost_list);
+		model.addAttribute("claim_list", claim_list);
+		model.addAttribute("uname",username);
+		System.out.println(username);
         return new ModelAndView("dashboard");  
     }
 	
@@ -209,6 +271,34 @@ public class LostFoundController {
     public String claimEntryDelete(RedirectAttributes redirectAttributes,@PathVariable int id){  
 		lostfoundDao.deletePrevious(id,"claim");
 		return "redirect:/dashboard";
+    } 
+	
+	@RequestMapping("/updatefound/id={id}")  
+	 public ModelAndView updateFound(Entries entries, ModelMap model, RedirectAttributes redirectAttributes,@PathVariable int id){  
+		List<Entries> list=lostfoundDao.getEntryById(id, "found");
+		model.addAttribute("found-entries", entries);
+		return new ModelAndView("updateFound","list",list); 
+    } 
+	
+	
+	@RequestMapping("/updatelost/id={id}")  
+    public ModelAndView updateLost(Entries entries, ModelMap model, RedirectAttributes redirectAttributes,@PathVariable int id){  
+		List<Entries> list=lostfoundDao.getEntryById(id, "lost");
+		model.addAttribute("lost-entries", entries);
+		return new ModelAndView("updateLost","list",list); 
+    } 
+	
+	@RequestMapping("/foundentryupdated/id={id}")  
+    public String foundEntryUpdated(Entries entries, RedirectAttributes redirectAttributes,@PathVariable int id){  
+		lostfoundDao.updateEntry(entries, id,"found");
+		return "redirect:/viewentry/found/{id}";
+    } 
+	
+	
+	@RequestMapping("/lostentryupdated/id={id}")  
+    public String claimEntryUpdated(Entries entries, RedirectAttributes redirectAttributes,@PathVariable int id){  
+		lostfoundDao.updateEntry(entries, id,"lost");
+		return "redirect:/viewentry/lost/{id}";
     } 
 
 }

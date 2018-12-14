@@ -22,7 +22,7 @@
 		<h4 align="center">Welcome to the Virtual Lost and Found Board</h4>
 	</div>
 	<div class="back-link">
-		<h5><a href="/../dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i></h5>
+		<h5><a href="../.././dashboard" style="float:right;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i>&nbsp;<a href="../.././logout" style="float:right;margin-right:50px;color:yellow"> Logout</a><i style="float:right" class="material-icons">logout</i></h5>
 	</div>
 		<div class="container-fluid" style="text-align:center;padding-bottom:70px;">
 			<form:form class="form-horizontal" style="margin-top: 100px;">

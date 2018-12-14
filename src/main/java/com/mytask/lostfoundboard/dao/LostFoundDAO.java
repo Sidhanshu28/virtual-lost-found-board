@@ -205,7 +205,7 @@ public class LostFoundDAO  {
 	    }
 		else {sql="INSERT INTO claim_table (`cat_ct`,`desc_ct`,`location_ct`,`date_ct`) SELECT `cat_ft`,`desc_ft`,`location_ft`,`date_ft` FROM found_table WHERE found_id="+id+";";
 		}
-		System.out.println(sql);
+//		System.out.println(sql);
 		template.update(sql);
 		deletePrevious(id, type);
 		saveContact(f,type);
@@ -223,6 +223,45 @@ public class LostFoundDAO  {
 	public void saveContact(Entries e,String t) {
 		String sql = "INSERT INTO contact_table(`name`,`email`,`contact`,`type`) values ('"+e.getName()+"','"+e.getEmail()+"','"+e.getContact()+"','"+t+"')";
 		template.update(sql);
+	}
+	
+	public void updateEntry(Entries e, int id, String t) {
+		String sql = "";
+		if(t=="lost")sql = "UPDATE lost_table SET cat_lt='"+ e.getCategory() +"', desc_lt='"+e.getDesc()+"', location_lt='"+e.getLocation()+"',date_lt='"+e.getDate()+"', prize_lt='"+e.getPrize()+"' WHERE lost_id="+id+";";
+		else sql = "UPDATE found_table SET cat_ft='"+ e.getCategory() +"', desc_ft='"+e.getDesc()+"', location_ft='"+e.getLocation()+"',date_ft='"+e.getDate()+"' WHERE found_id="+id+";";
+//		System.out.println(sql);
+		template.update(sql);
+	}
+	
+	public List<Entries> checkLoginParams(Entries e) {
+		String query = "SELECT * FROM user_table WHERE username ='"+e.getUserName()+"' and password='"+e.getPassword()+"'";
+		System.out.println(query);
+		
+		return template.query(query,new ResultSetExtractor<List<Entries>>(){  
+		    
+		     public List<Entries> extractData(ResultSet rs) throws SQLException,  
+		            DataAccessException {  
+		    	 
+		    	List<Entries> list=new ArrayList<Entries>();  
+		        while(rs.next()){ 
+		        	/** using setters to set the values */
+		        	Entries e=new Entries();  
+		        e.setFirstName(rs.getString(1));  
+		        e.setLastName(rs.getString(2));  
+		        e.setUserName(rs.getString(3));  
+		        e.setUserEmail(rs.getString(4));  
+		        e.setPassword(rs.getString(5));  
+		        list.add(e);  
+		        }  
+		        System.out.println(list);
+		        return list;  /** returning list which will bind data to table through foreach in table rows */
+		        }  
+		    });
+	}
+	
+	public void signup(Entries e) {
+		String query = "INSERT INTO user_table(`fname`,`lname`,`uemail`,`username`,`password`) values ('"+e.getFirstName()+"','"+e.getLastName()+"','"+e.getUserEmail()+"','"+e.getUserName()+"','"+e.getPassword()+"')";	
+		template.update(query);
 	}
 	
 }

@@ -25,7 +25,7 @@
 		<h5><a href="./dashboard" style="float:right;color:yellow;margin-right:50px;"> Dashboard</a><i style="float:right" class="material-icons">dashboard</i>&nbsp;<a href="./logout" style="float:right;margin-right:50px;color:yellow"> Logout</a><i style="float:right" class="material-icons">logout</i></h5>
 	</div>
 		<div class="formBox">
-		<form:form method="POST" class="form-form" name="entryform" modelAttribute="found-entries" action="filter-entry-found" onsubmit="return validate(event);">
+		<form:form method="POST" class="form-form" name="entryform" modelAttribute="found-entries" action=".././foundentryupdated/id=${list[0].id}" onsubmit="return validate(event);">
 
 				<div class="form-group row justify-content-md-center">
 					<label for="FeedName" class="col-lg-2 col-form-label text-md-right">
@@ -47,7 +47,7 @@
 											<strong>Description :</strong></label>
 					<div class="col-lg-4">
 						<form:input type="textbox" name="desc" path="desc" id="desc"
-							class="form-control" placeholder="write description here : color, shape, structure" />
+							class="form-control" value="${list[0].desc}" />
 					</div>
 				</div>
 
@@ -56,7 +56,7 @@
 											<strong>Location :</strong></label>
 					<div class="col-lg-4">
 						<form:input type="text" name="location" path="location" id="location"
-							class="form-control" placeholder="where did you found it?" />
+							class="form-control" value="${list[0].location}" />
 					</div>
 				</div>
 
@@ -65,13 +65,13 @@
 											<strong>Date :</strong></label>
 					<div class="col-lg-4">
 						<form:input type="date" name="date" path="date" id="date"
-							class="form-control" placeholder="when did you found it?" />
+							class="form-control" value="${list[0].date.split('\\s')[0]}" />
 					</div>
 				</div>
 
 				<div class="form-group row justify-content-md-center">
 					<div class="col-lg-2">
-						<input type="submit" value="Add Entry" class="btn btn-primary" >
+						<input type="submit" value="Update Entry" class="btn btn-primary" >
 					</div>
 				</div>
 
