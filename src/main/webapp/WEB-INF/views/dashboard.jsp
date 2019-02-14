@@ -22,7 +22,7 @@
 	<div class="container-fluid"style="text-align:center;">
 		<p>Hi, ${uname}</p>	<div class="boxes">
 		<form:form class="form-horizontal">
-			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" style="color:yellow" href=".././lostentry">Click here!</a></span>
+			<span style="margin-left:75px;color:black"><i>Lost something?</i><a class="lost-link" style="color:yellow" href="./lostentry">Click here!</a></span>
 			<div class="lost-list-div list-div blinking-lost-border">
 				<div class="lost-list-header list-header blinking-lost"><strong>LOST</strong></div>
 				<ul class="lost-list list">
@@ -55,7 +55,7 @@
 		
 	<div class="boxes">
 	<form:form class="form-horizontal">
-		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" style="color:yellow" href=".././foundentry">Click here!</a></span>
+		<span style="margin-left:75px;color:black"><i>Found something?</i><a class="lost-link" style="color:yellow" href="./foundentry">Click here!</a></span>
 			<div class="found-list-div list-div blinking-found-border">
 				<div class="found-list-header list-header blinking-found"><strong>FOUND</strong></div>
 				<ul class="found-list list">
